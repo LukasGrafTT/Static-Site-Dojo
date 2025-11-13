@@ -5,5 +5,5 @@ export default async function(eleventyConfig) {
 
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
-  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
 };
