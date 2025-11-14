@@ -1,0 +1,45 @@
+---
+layout: layout.njk
+title: Home
+permalink: /index.html
+---
+
+<h1>Featured</h1>
+
+<div class="training-grid">
+{% for training in trainings %}
+    {% if training.featured %}
+    <div class="training-card">
+        <span class="featured-badge">Featured</span>
+        <h3>{{ training.title.en }}</h3>
+        <p>{{ training.description.en }}</p>
+        <div class="training-meta">
+            <span class="meta-item">⏱️ {{ training.duration.en }}</span>
+            <span class="meta-item">📊 {{ training.level.en }}</span>
+        </div>
+        <div class="categories-list">
+            {% for categoryId in training.categories %}
+                {% for cat in categories %}
+                    {% if cat.id == categoryId %}
+                        <a href="/categories/{{ categoryId }}/" class="category-badge">{{ cat.name.en }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <a href="/trainings/{{ training.id }}/" class="btn">View Details</a>
+    </div>
+    {% endif %}
+{% endfor %}
+</div>
+
+<h2>Categories</h2>
+
+<div class="category-grid">
+{% for category in categories %}
+    <div class="category-card">
+        <h3>{{ category.name.en }}</h3>
+        <p>{{ category.description.en }}</p>
+        <a href="/categories/{{ category.id }}/" class="btn btn-secondary">View All</a>
+    </div>
+{% endfor %}
+</div>

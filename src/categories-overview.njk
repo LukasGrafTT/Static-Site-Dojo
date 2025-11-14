@@ -1,0 +1,18 @@
+---
+layout: layout.njk
+title: Categories
+permalink: /categories/index.html
+---
+
+<h1>Categories</h1>
+
+<div class="category-grid">
+{% for category in categories %}
+    <div class="category-card">
+        <h3>{{ category.name.en }}</h3>
+        <p>{{ category.description.en }}</p>
+        <p><strong>{{ trainings | byCategory(category.id) | length }} trainings</strong></p>
+        <a href="/categories/{{ category.id }}/" class="btn">View All</a>
+    </div>
+{% endfor %}
+</div>
